@@ -1,4 +1,8 @@
-# SINGLE MAP
+# SINGLE MAP 
+Scenario: Only want to specify some_map if there are values
+- value_1 is mandatory 
+- value_2 is optional
+
 variable "some_map" {
   type = map
   default     = {}
@@ -6,7 +10,6 @@ variable "some_map" {
 
 some_map = {
   value1     = ["http://www.*.example.com"]
-  #value2 = false #optional
 }
 
 dynamic "some_map" {
@@ -18,12 +21,14 @@ dynamic "some_map" {
 }
 
 # LIST OF STRINGS
+Scenario: List of maps to apply some_list. Can also not be specified.
+- all variables are optional
+
 variable "some_list" {
   type        = list(string)
   default     = []
 }
 
-# all variables optional
 some_list = [
   {
     value1 = a
